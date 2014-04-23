@@ -18,6 +18,7 @@ from traceback import format_exc
 from eventlet import Timeout
 from urllib import unquote
 
+from swift.common.manager import SWIFT_DIR
 from swift.common.swob import Request, Response
 from swift.common.swob import HTTPBadRequest, HTTPForbidden, HTTPNotFound, \
     HTTPSeeOther, HTTPUnauthorized, HTTPServerError
@@ -86,7 +87,7 @@ class KerbAuth(object):
         self.ext_authentication_url = conf.get('ext_authentication_url')
         if not self.ext_authentication_url:
             raise RuntimeError("Missing filter parameter ext_authentication_"
-                               "url in /etc/swift/proxy-server.conf")
+                               "url in %s/proxy-server.conf" % SWIFT_DIR)
 
     def __call__(self, env, start_response):
         """

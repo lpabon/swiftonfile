@@ -31,6 +31,7 @@ from greenlet import getcurrent
 from contextlib import contextmanager
 from gluster.swift.common.exceptions import AlreadyExistsAsFile, \
     AlreadyExistsAsDir
+from swift.common.manager import SWIFT_DIR
 from swift.common.utils import TRUE_VALUES, ThreadPool, config_true_value
 from swift.common.exceptions import DiskFileNotExist, DiskFileError, \
     DiskFileNoSpace, DiskFileDeviceUnavailable, DiskFileNotOpen, \
@@ -182,7 +183,7 @@ def make_directory(full_path, uid, gid, metadata=None):
 
 
 _fs_conf = ConfigParser()
-if _fs_conf.read(os.path.join('/etc/swift', 'fs.conf')):
+if _fs_conf.read(os.path.join(SWIFT_DIR, 'fs.conf')):
     try:
         _mkdir_locking = _fs_conf.get('DEFAULT', 'mkdir_locking', "no") \
             in TRUE_VALUES

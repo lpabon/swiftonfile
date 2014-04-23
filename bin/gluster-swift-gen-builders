@@ -32,7 +32,7 @@ print_usage() {
 builder_files="account.builder container.builder object.builder"
 
 function create {
-    swift-ring-builder $1 create 1 1 1 >> /tmp/out
+    swift-ring-builder $1 create 1 1 1 > /dev/null
 }
 
 function add {

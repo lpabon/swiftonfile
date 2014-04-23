@@ -33,6 +33,7 @@ from swift.common.exceptions import ConnectionTimeout
 from swift.common.bufferedhttp import http_connect
 from eventlet import Timeout
 from swift.common.http import is_success
+from swift.common.manager import SWIFT_DIR
 from gluster.swift.common.ring import Ring
 from swift import gettext_ as _
 
@@ -55,7 +56,7 @@ class ObjectController(server.ObjectController):
         # Common on-disk hierarchy shared across account, container and object
         # servers.
         self._ondisk_mgr = OnDiskManager(conf, self.logger)
-        self.swift_dir = conf.get('swift_dir', '/etc/swift')
+        self.swift_dir = conf.get('swift_dir', SWIFT_DIR)
 
     def get_diskfile(self, device, partition, account, container, obj,
                      **kwargs):

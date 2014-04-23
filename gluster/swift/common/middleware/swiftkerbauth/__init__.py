@@ -14,11 +14,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
 from swift.common.utils import readconf, config_true_value
+from swift.common.manager import SWIFT_DIR
 
 config_file = {}
 try:
-    config_file = readconf("/etc/swift/proxy-server.conf",
+    config_file = readconf(os.path.join(SWIFT_DIR, 'proxy-server.conf'),
                            section_name="filter:cache")
 except SystemExit:
     pass
@@ -28,7 +30,7 @@ MEMCACHE_SERVERS = config_file.get('memcache_servers', None)
 config_file = {}
 
 try:
-    config_file = readconf("/etc/swift/proxy-server.conf",
+    config_file = readconf(os.path.join(SWIFT_DIR, 'proxy-server.conf'),
                            section_name="filter:kerbauth")
 except SystemExit:
     pass

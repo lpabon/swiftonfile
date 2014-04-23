@@ -21,6 +21,7 @@ import logging
 import urllib
 
 from ConfigParser import ConfigParser, NoSectionError, NoOptionError
+from swift.common.manager import SWIFT_DIR
 from swift.common.utils import TRUE_VALUES
 from gluster.swift.common.fs_utils import do_ismount
 from gluster.swift.common.exceptions import FailureToMountError
@@ -31,7 +32,6 @@ from gluster.swift.common.exceptions import FailureToMountError
 _fs_conf = ConfigParser()
 MOUNT_IP = 'localhost'
 RUN_DIR = '/var/run/swift'
-SWIFT_DIR = '/etc/swift'
 _do_getsize = False
 _allow_mount_per_server = False
 _implicit_dir_objects = False
