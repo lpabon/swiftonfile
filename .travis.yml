@@ -10,7 +10,7 @@ install: "pip install tox nose"
 script: 
   - if [[ $TRAVIS_PYTHON_VERSION == '2.6' ]]; then tox -e py26; fi
   - if [[ $TRAVIS_PYTHON_VERSION == '2.7' ]]; then tox -e py27; fi
-  - sudo mkdir /mnt/gluster-object/test
-  - sudo mkdir /mnt/gluster-object/test2
-  - sudo mkdir /mnt/gluster-object/gsmetadata
+  - sudo mkdir -p /mnt/gluster-object/test
+  - sudo mkdir -p /mnt/gluster-object/test2
+  - sudo mkdir -p /mnt/gluster-object/gsmetadata
   - tox -e functest
